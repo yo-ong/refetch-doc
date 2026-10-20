@@ -12,7 +12,7 @@ ReFetch does not collect, transmit, sell or share any personal or usage data. Th
 
 When you turn capture on for a tab, ReFetch records the requests that tab makes. A record can include the URL, method, request and response headers, request and response bodies (truncated to 1 MiB), and timing information. These records may contain sensitive content such as cookies or authorization tokens, because they reflect what the page sends and receives.
 
-- Captured data is stored only in your browser's local extension storage (`storage.local`). The original bytes of uploaded request bodies, kept so a replay can resend them exactly, are stored in the extension's IndexedDB (up to 100 MiB per body, 1 GiB in total).
+- Captured data is stored only in your browser: in local extension storage (`storage.local`), and, for the original bytes of uploaded request bodies kept so a replay can resend them exactly, in the extension's IndexedDB (up to 100 MiB per body, 1 GiB in total).
 - Capture is off by default and must be enabled per tab.
 - Captured data is cleared at the start of each new browser session, and each tab is capped at 1,000 records. If you turn off Preserve log, a tab's records are also cleared when it loads a new page.
 - Filter settings are stored in local extension storage as well, and can make ReFetch drop matching requests instead of storing them.
