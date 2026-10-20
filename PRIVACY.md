@@ -44,4 +44,4 @@ If this policy changes, the updated version will be published at this URL with a
 
 ## Contact
 
-Please open an issue at https://github.com/yo-ong/refetch-privacy/issues.
+Please open an issue at https://github.com/yo-ong/refetch-doc/issues.
