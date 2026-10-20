@@ -7,6 +7,8 @@ ReFetch는 Chrome과 Firefox용 브라우저 확장 프로그램입니다. 현�
 - [변경 내역 (영문)](CHANGELOG.md)
 - [개인정보 처리방침 (영문)](PRIVACY.md)
 
+![캡처한 요청 목록](screenshots/requests.png)
+
 ## 시작하기
 
 1. 확인할 페이지를 열고 툴바의 ReFetch 아이콘을 누릅니다. 단축키는 `Ctrl+Shift+X`(macOS는 `Command+Shift+X`)입니다.
@@ -21,6 +23,10 @@ ReFetch는 Chrome과 Firefox용 브라우저 확장 프로그램입니다. 현�
 - **Status** 컬럼은 개발자도구와 같은 방식으로 표시합니다. `200 CORS`는 서버는 응답했지만 CORS 때문에 페이지가 응답을 읽지 못한 경우, `(failed)`는 네트워크 오류, `(canceled)`는 중단된 요청입니다. 마우스를 올리면 자세한 내용이 보입니다.
 - 목록 헤더를 우클릭하면 컬럼을 보이거나 숨기고, 요청·응답 헤더 컬럼을 추가할 수 있습니다. 헤더를 끌어 순서를 바꾸고, 가장자리를 끌어 너비를 조절합니다.
 
+![요청 상세와 이전·다음 이동](screenshots/detail.png)
+
+![CORS로 막힌 요청의 상세](screenshots/cors.png)
+
 ## 수정 후 재전송
 
 1. 요청을 열고 **Edit**을 누릅니다.
@@ -29,6 +35,8 @@ ReFetch는 Chrome과 Firefox용 브라우저 확장 프로그램입니다. 현�
 
 재전송한 요청은 목록에서 주황색으로 표시됩니다.
 
+![원문 요청 수정](screenshots/edit.png)
+
 ## 필터
 
 깔때기 아이콘을 눌러 필터를 엽니다.
@@ -36,6 +44,8 @@ ReFetch는 Chrome과 Firefox용 브라우저 확장 프로그램입니다. 현�
 - 메서드, 호스트(`*.example.com, localhost:*`), URL 정규식, Status, Content-Type, Kind 조건을 걸 수 있습니다. 조건마다 **Include**(포함) 또는 **Exclude**(제외)를 고르고, 비워 둔 조건은 무시됩니다.
 - 조건에 맞지 않는 요청은 목록에서 숨겨지고, 숨긴 건수가 툴바에 표시됩니다.
 - **Don't store hidden requests**를 켜면 숨겨질 요청을 캡처 단계에서 아예 저장하지 않습니다. 나중에 다시 볼 수는 없지만, 탭당 1,000건 보관 한도를 차지하지 않습니다.
+
+![필터](screenshots/filter.png)
 
 ## 툴바
 
