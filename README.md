@@ -4,10 +4,20 @@
 
 ReFetch is a browser extension for Chrome and Firefox that captures the fetch, XHR and EventSource requests of the current tab, shows them as raw HTTP, and lets you edit and resend them from the page itself.
 
+- [Install from the Chrome Web Store](https://chromewebstore.google.com/detail/refetch/aobjmhncnmbideoghphkpjpehmbfohfe)
 - [Changelog](CHANGELOG.md)
 - [Privacy policy](PRIVACY.md)
 
 ![Captured requests](screenshots/requests.png)
+
+## Features
+
+- Opt-in capture per tab. Status reads like DevTools: `200 CORS`, `(failed)`, `(canceled)`.
+- Raw request and response, including headers the browser adds such as cookies. Step through requests with previous / next.
+- Edit and replay from the page itself, so its cookies and origin carry over.
+- Include / Exclude filter by method, host, URL, status, content type and kind.
+- Preserve log across navigations, optional document request capture, popup or side panel.
+- Nothing leaves your browser: no servers, no analytics.
 
 ## Getting started
 

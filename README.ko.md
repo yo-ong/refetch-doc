@@ -4,10 +4,20 @@
 
 ReFetch는 Chrome과 Firefox용 브라우저 확장 프로그램입니다. 현재 탭의 fetch, XHR, EventSource 요청을 캡처해 원문 HTTP로 보여 주고, 수정해서 그 페이지에서 다시 보낼 수 있습니다.
 
+- [Chrome 웹스토어에서 설치](https://chromewebstore.google.com/detail/refetch/aobjmhncnmbideoghphkpjpehmbfohfe)
 - [변경 내역 (영문)](CHANGELOG.md)
 - [개인정보 처리방침 (영문)](PRIVACY.md)
 
 ![캡처한 요청 목록](screenshots/requests.png)
+
+## 주요 기능
+
+- 탭마다 켜는 캡처. Status는 개발자도구처럼 `200 CORS`, `(failed)`, `(canceled)`로 표시합니다.
+- 브라우저가 추가한 쿠키 등 헤더까지 포함한 원문 요청·응답. 이전·다음 버튼으로 요청을 넘겨 봅니다.
+- 원래 페이지에서 수정 후 재전송하므로 그 페이지의 쿠키와 origin이 그대로 적용됩니다.
+- 메서드, 호스트, URL, Status, Content-Type, Kind별 Include/Exclude 필터.
+- 페이지 이동 후에도 기록 유지(Preserve log), 페이지 이동 요청 캡처, 팝업 또는 사이드 패널.
+- 데이터는 브라우저 밖으로 나가지 않습니다. 서버도 분석 도구도 없습니다.
 
 ## 시작하기
 
