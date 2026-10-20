@@ -1,6 +1,6 @@
 # ReFetch Privacy Policy
 
-**Last updated: 2026-10-17**
+**Last updated: 2026-10-20**
 
 ReFetch ("the extension") is a browser extension that captures, inspects and replays fetch, XMLHttpRequest and EventSource requests made by web pages in your browser.
 
@@ -14,12 +14,13 @@ When you turn capture on for a tab, ReFetch records the requests that tab makes.
 
 - Captured data is stored only in your browser's local extension storage (`storage.local`).
 - Capture is off by default and must be enabled per tab.
-- Captured data is cleared at the start of each new browser session, and each tab is capped at 1,000 records.
+- Captured data is cleared at the start of each new browser session, and each tab is capped at 1,000 records. If you turn off Preserve log, a tab's records are also cleared when it loads a new page.
+- Filter settings are stored in local extension storage as well, and can make ReFetch drop matching requests instead of storing them.
 - You can stop capture at any time. Uninstalling the extension removes all captured data.
 
 ## Settings sync
 
-Your preferences (display mode, document-capture option and list columns) are stored in `storage.sync`. If you are signed in to your browser with sync enabled, the browser vendor syncs these preferences between your devices under its own privacy policy. Captured requests are never stored in `storage.sync`.
+Your preferences (display mode, document-capture option, preserve-log option and list columns) are stored in `storage.sync`. If you are signed in to your browser with sync enabled, the browser vendor syncs these preferences between your devices under its own privacy policy. Captured requests are never stored in `storage.sync`.
 
 ## Replayed requests
 
@@ -43,4 +44,4 @@ If this policy changes, the updated version will be published at this URL with a
 
 ## Contact
 
-Please open an issue at https://github.com/yo-ong/refetch-privacy/issues.
+Please open an issue at https://github.com/yo-ong/refetch-doc/issues.
