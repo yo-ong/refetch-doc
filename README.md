@@ -7,6 +7,8 @@ ReFetch is a browser extension for Chrome and Firefox that captures the fetch, X
 - [Changelog](CHANGELOG.md)
 - [Privacy policy](PRIVACY.md)
 
+![Captured requests](screenshots/requests.png)
+
 ## Getting started
 
 1. Open the page you want to inspect and click the ReFetch icon in the toolbar (or press `Ctrl+Shift+X`, `Command+Shift+X` on macOS).
@@ -21,6 +23,10 @@ ReFetch is a browser extension for Chrome and Firefox that captures the fetch, X
 - The **Status** column works like DevTools: `200 CORS` means the server answered but CORS blocked the page from reading the response, `(failed)` is a network error and `(canceled)` is an aborted request. Hover over it for details.
 - Right-click the list header to show, hide or add columns (including request and response header columns). Drag a header to reorder it, or its edge to resize it.
 
+![Request detail with previous/next](screenshots/detail.png)
+
+![Detail of a CORS-blocked request](screenshots/cors.png)
+
 ## Editing and replaying
 
 1. Open a request and click **Edit**.
@@ -29,6 +35,8 @@ ReFetch is a browser extension for Chrome and Firefox that captures the fetch, X
 
 Replayed requests are highlighted in orange in the list.
 
+![Editing a raw request](screenshots/edit.png)
+
 ## Filtering
 
 Click the funnel icon to open the filter.
@@ -36,6 +44,8 @@ Click the funnel icon to open the filter.
 - Set conditions on method, host (`*.example.com, localhost:*`), URL regex, status, content type and kind. Each condition can be **Include** or **Exclude**; empty conditions are ignored.
 - Requests that don't match are hidden from the list, and the toolbar shows how many are hidden.
 - Turn on **Don't store hidden requests** to drop them at capture time instead. They can't be shown again later, but they don't use up the 1,000 requests kept per tab.
+
+![Filter](screenshots/filter.png)
 
 ## Toolbar
 
