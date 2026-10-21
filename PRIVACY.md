@@ -33,7 +33,7 @@ If that page is no longer available, you can choose "Send from extension". ReFet
 
 - **Host access (`<all_urls>`)**: to capture and replay requests on whichever site you choose to inspect, and to send a request from the extension when you choose "Send from extension".
 - **`webRequest`**: to read the actual request and response headers, including headers added by the browser.
-- **`declarativeNetRequestWithHostAccess`**: to apply header edits that `fetch` cannot set during a replay, using a short-lived rule scoped to the tab and exact URL, and, for "Send from extension", a short-lived rule scoped to the extension's own request for that exact URL and method.
+- **`declarativeNetRequestWithHostAccess`**: to apply header edits that `fetch` cannot set during a replay, using a short-lived rule scoped to the tab and exact URL, and, for "Send from extension", a short-lived rule limited to requests not tied to any tab, for that exact URL and method, removed once the response headers arrive.
 - **`storage` and `unlimitedStorage`**: to keep settings and captured requests locally.
 - **`sidePanel`**: to show the extension in the browser's side panel.
 

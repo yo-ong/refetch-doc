@@ -6,7 +6,7 @@
 
 - **This tab only**: A toolbar toggle that lists only the current tab's requests.
 - **Tab column**: Shows the ID of the tab that sent each request. Hidden by default; turn it on from the column menu.
-- **Send from extension**: When the page that sent a request is gone (its tab was closed, or the frame is now on another origin), the editor offers to send the edited request from the extension instead. The page's CORS, cookie policy and Origin don't apply, and the headers shown in the editor, `Cookie` included, are sent as is; a request without a `Cookie` line gets the browser's normal cookies. Nothing is sent this way unless you choose it, and these requests are labelled "Sent from extension".
+- **Send from extension**: When the page that sent a request is gone (its tab was closed, or the frame is now on another origin), the editor offers to send the edited request from the extension instead. The page's CORS, cookie policy and Origin don't apply, and the headers shown in the editor, `Cookie` included, are sent as is; deleting the `Cookie` line sends no cookies, and only a request that never had one gets the browser's normal cookies. Nothing is sent this way unless you choose it, and these requests are labelled "Sent from extension".
 
 ### Changed
 
