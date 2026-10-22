@@ -13,9 +13,10 @@ ReFetch is a browser extension for Chrome and Firefox that captures the fetch, X
 ## Features
 
 - One switch captures all tabs, off by default. Status reads like DevTools: `200 CORS`, `(failed)`, `(canceled)`.
-- One log of the latest 3,000 requests from all tabs, kept across page loads and after a tab is closed. Turn on This tab only to list just the current tab's requests.
-- Raw request and response, including headers the browser adds such as cookies. Step through requests with previous / next.
-- Edit and replay from the page itself, so its cookies and origin carry over. If that page is gone, send the request from the extension instead.
+- One log of the latest 3,000 requests from all tabs, kept across page loads and after a tab is closed. Turn on This tab only to list just the current tab's requests; Clear then removes only that tab's requests.
+- Raw request and response, including headers the browser adds such as cookies. Step through requests with previous / next, and copy a request as cURL or `fetch`.
+- Search the list across URLs, headers and bodies, and export it as a HAR file.
+- Edit and replay from the page itself, so its cookies and origin carry over. If that page is gone, send the request from the extension instead. Or write a new request from scratch.
 - Include / Exclude filter by method, host, URL, status, content type and kind.
 - Optional document request capture, a Tab column showing which tab sent each request, popup or side panel.
 - Nothing leaves your browser: no servers, no analytics.
@@ -31,6 +32,8 @@ ReFetch is a browser extension for Chrome and Firefox that captures the fetch, X
 
 - Click a row to see the raw request and response, including headers the browser adds (cookies, etc.). Streaming responses update as data arrives.
 - Use the up/down buttons next to **Back** to move to the previous or next request.
+- Click **Copy as** in the detail view to copy the request as a cURL (bash) command, with the headers the browser sent (`Cookie` included), or as `fetch` code with the page's own headers.
+- Type in the search box above the list to show only requests whose URL, headers or bodies contain the text (case-insensitive). It works on top of the filter, and previous/next follows the results.
 - The **Status** column works like DevTools: `200 CORS` means the server answered but CORS blocked the page from reading the response, `(failed)` is a network error and `(canceled)` is an aborted request. Hover over it for details.
 - Right-click the list header to show, hide or add columns (including request and response header columns, and the **Tab** column with the ID of the tab that sent each request). Drag a header to reorder it, or its edge to resize it.
 
@@ -47,6 +50,8 @@ ReFetch is a browser extension for Chrome and Firefox that captures the fetch, X
 Replayed requests are highlighted in orange in the list.
 
 If the page that sent the request is gone (its tab was closed, or the frame is now on another origin), ReFetch offers **Send from extension**. The extension then sends the edited request itself. The page's CORS, cookie policy and Origin don't apply, and the headers shown in the editor, `Cookie` included, are sent as is; deleting the `Cookie` line sends no cookies, and only a request that never had one gets the browser's normal cookies. Nothing is sent this way unless you choose it, and these requests are labelled "Sent from extension".
+
+To write a request from scratch, click **+** (New request) in the toolbar. The editor opens with `GET /` for the current tab's site, and **Send** sends it from that tab's page like a replay.
 
 ![Editing a raw request](screenshots/edit.png)
 
@@ -65,10 +70,12 @@ Click the funnel icon to open the filter.
 | Button | What it does |
 | --- | --- |
 | ● Record | Start or stop capturing all tabs |
-| Clear | Remove all captured requests, including other tabs' requests, even when This tab only is on |
+| Clear | Remove all captured requests, or only the current tab's requests when This tab only is on |
 | This tab only | List only the current tab's requests |
 | Globe (Document requests) | Also capture page navigations and redirects |
 | Funnel (Filter) | Open the filter |
+| Download (Export HAR) | Save the requests in the list as a HAR file. It includes cookies, so treat it as sensitive |
+| + (New request) | Write a new request and send it from the current tab |
 | Open as panel / Switch to popup | Show ReFetch in the side panel (Firefox: sidebar) or as a popup |
 
 Captured requests stay in your browser until you press Clear or the browser restarts; navigating, reloading or closing a tab doesn't remove them. Incognito/private windows, if you allow the extension there, share the same log. See the [privacy policy](PRIVACY.md) for details.
