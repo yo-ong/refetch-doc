@@ -1,6 +1,6 @@
 # ReFetch Privacy Policy
 
-**Last updated: 2026-10-21**
+**Last updated: 2026-10-22**
 
 ReFetch ("the extension") is a browser extension that captures, inspects and replays fetch, XMLHttpRequest and EventSource requests made by web pages in your browser.
 
@@ -14,7 +14,7 @@ When you turn capture on, ReFetch records the requests your tabs make. A record 
 
 - Captured data is stored only in your browser: in local extension storage (`storage.local`), and, for the original bytes of uploaded request bodies kept so a replay can resend them exactly, in the extension's IndexedDB (up to 100 MiB per body, 1 GiB in total).
 - Capture is off by default. A single switch turns it on for all tabs, and it turns off again when the browser restarts.
-- Records from all tabs are kept in one log, capped at the latest 3,000 records in total. The log is cleared at the start of each new browser session or when you press Clear. Records are kept when a page navigates or reloads and when a tab is closed.
+- Records from all tabs are kept in one log, capped at the latest 3,000 records in total. The log is cleared at the start of each new browser session or when you press Clear (with This tab only on, Clear removes only the current tab's records). Records are kept when a page navigates or reloads and when a tab is closed.
 - If you allow the extension in incognito/private windows, requests made there are recorded into the same log and are kept after the private window closes, until you press Clear or the browser restarts.
 - Filter settings are stored in local extension storage as well, and can make ReFetch drop matching requests instead of storing them.
 - You can stop capture at any time. Uninstalling the extension removes all captured data.
@@ -25,9 +25,13 @@ Your preferences (display mode, document-capture option, This tab only option an
 
 ## Replayed requests
 
-When you choose to replay a request, ReFetch sends it from the page you captured it on, to the destination you selected or edited. Replays are made only on your explicit action. ReFetch does not send replays to any server of its own.
+When you choose to replay a request, ReFetch sends it from the page you captured it on, to the destination you selected or edited. Replays are made only on your explicit action. ReFetch does not send replays to any server of its own. A request you write with New request is sent the same way, from the current tab's page.
 
 If that page is no longer available, you can choose "Send from extension". ReFetch then sends the request as you edited it directly from the extension to the site in that request, with the headers shown in the editor (including `Cookie`); a request without a `Cookie` header is sent with the browser's normal cookies. This happens only when you choose it, and nothing is sent to the developer or to any third party.
+
+## Copying and exporting
+
+"Copy as" puts a request you select, including headers such as `Cookie`, on your clipboard, and "Export HAR" saves the requests in the list, including cookies, to a file on your computer. Both happen only when you choose them, and ReFetch does not send the copied text or the file anywhere. Treat them as sensitive.
 
 ## Permissions
 
