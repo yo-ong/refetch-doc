@@ -32,7 +32,7 @@ ReFetch is a browser extension for Chrome and Firefox that captures the fetch, X
 
 - Click a row to see the raw request and response, including headers the browser adds (cookies, etc.). Streaming responses update as data arrives.
 - Use the up/down buttons next to **Back** to move to the previous or next request.
-- Click **Copy as** in the detail view to copy the request as a cURL (bash) command, with the headers the browser sent (`Cookie` included), or as `fetch` code with the page's own headers.
+- Click **Copy as** in the detail view to copy the request as a cURL (bash) command, with the headers the browser sent (`Cookie` included), or as `fetch` code with the page's own headers (not for document requests).
 - Type in the search box above the list to show only requests whose URL, headers or bodies contain the text (case-insensitive). It works on top of the filter, and previous/next follows the results.
 - The **Status** column works like DevTools: `200 CORS` means the server answered but CORS blocked the page from reading the response, `(failed)` is a network error and `(canceled)` is an aborted request. Hover over it for details.
 - Right-click the list header to show, hide or add columns (including request and response header columns, and the **Tab** column with the ID of the tab that sent each request). Drag a header to reorder it, or its edge to resize it.
@@ -51,7 +51,7 @@ Replayed requests are highlighted in orange in the list.
 
 If the page that sent the request is gone (its tab was closed, or the frame is now on another origin), ReFetch offers **Send from extension**. The extension then sends the edited request itself. The page's CORS, cookie policy and Origin don't apply, and the headers shown in the editor, `Cookie` included, are sent as is; deleting the `Cookie` line sends no cookies, and only a request that never had one gets the browser's normal cookies. Nothing is sent this way unless you choose it, and these requests are labelled "Sent from extension".
 
-To write a request from scratch, click **+** (New request) in the toolbar. The editor opens with `GET /` for the current tab's site, and **Send** sends it from that tab's page like a replay.
+To write a request from scratch, click **+** (New request) in the toolbar. The editor opens with `GET /` for the current tab's site (`https://example.com/` on pages such as a new tab), and **Send** sends it from that tab's page like a replay.
 
 ![Editing a raw request](screenshots/edit.png)
 
