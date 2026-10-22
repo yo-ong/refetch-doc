@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.0 — 2026-10-22
+
+### Added
+
+- **Search**: A search box above the list shows only requests whose URL, request/response headers or bodies contain the text. It works on top of the filter, and previous/next in the detail view follows the results.
+- **Copy as cURL / fetch**: Copy a request from the detail view as a cURL (bash) command with the headers the browser sent, `Cookie` included, or as `fetch` code with the page's own headers.
+- **Export HAR**: Save the requests in the list as a HAR 1.2 file you can open in DevTools or other tools. The file includes cookies, so treat it as sensitive.
+- **New request**: Write a request from scratch in the editor and send it from the current tab's page.
+
+### Changed
+
+- Clear removes only the current tab's requests when This tab only is on.
+
 ## 0.3.0 — 2026-10-21
 
 ### Added
