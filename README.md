@@ -12,14 +12,14 @@ ReFetch is a browser extension for Chrome and Firefox that records the fetch, XH
 
 ## Features
 
-- One switch records all tabs, off by default. Status reads like DevTools: `200 CORS`, `(failed)`, `(canceled)`.
+- One switch records all tabs, off by default. Status reads like DevTools: `(pending)`, `200 CORS`, `(failed)`, `(canceled)`.
 - One log of the latest 3,000 requests from all tabs, kept across page loads and after a tab is closed. Turn on This tab only to list just the current tab's requests; Clear then removes only that tab's requests.
 - With recording off, pages and the network are left almost untouched, and the list stays fast with 3,000 requests.
 - Raw request and response, including headers the browser adds such as cookies. Step through requests with previous / next, and copy a request as cURL or `fetch`.
-- Search the list across URLs, headers and bodies, and export it as a HAR file.
+- Search the list across URLs, headers and bodies (replayed requests always stay listed), and export it as a HAR file.
 - Edit and replay from the page itself, so its cookies and origin carry over. If that page is gone, send the request from the extension instead. Or write a new request from scratch.
 - Include / Exclude filter by method, host, URL, status, content type and kind.
-- Optional document request recording, a Tab column showing which tab sent each request, popup or side panel.
+- Optional document request recording with **Fetch body** for GET page loads, a Tab column showing which tab sent each request, popup or side panel.
 - Nothing leaves your browser: no servers, no analytics.
 
 ## Getting started
@@ -27,15 +27,16 @@ ReFetch is a browser extension for Chrome and Firefox that records the fetch, XH
 1. Open the page you want to inspect and click the ReFetch icon in the toolbar (or press `Ctrl+Shift+X`, `Command+Shift+X` on macOS).
 2. If ReFetch asks for site access, grant it and reload the page.
 3. Press the **Record** button (●) to start recording. Recording is off by default; one click turns it on for all tabs until you turn it off or the browser restarts.
-4. Use the page as usual. Requests from all tabs appear in the list as they finish. Turn on **This tab only** to list just the current tab's requests.
+4. Use the page as usual. Requests from all tabs appear in the list as they finish; one still running after a second is listed right away as `(pending)`. Turn on **This tab only** to list just the current tab's requests.
 
 ## Inspecting requests
 
 - Click a row to see the raw request and response, including headers the browser adds (cookies, etc.). Streaming responses update as data arrives. A very large body shows only its first 100,000 characters with a **Show all** button; Copy as and Edit always use the full body.
 - Use the up/down buttons next to **Back** to move to the previous or next request.
 - Click **Copy as** in the detail view to copy the request as a cURL (bash) command, with the headers the browser sent (`Cookie` included), or as `fetch` code with the page's own headers (not for document requests).
-- Type in the search box above the list to show only requests whose URL, headers or bodies contain the text (case-insensitive). It works on top of the filter, and previous/next follows the results.
-- The **Status** column works like DevTools: `200 CORS` means the server answered but CORS blocked the page from reading the response, `(failed)` is a network error and `(canceled)` is an aborted request. Hover over it for details.
+- Type in the search box above the list to show only requests whose URL, headers or bodies contain the text (case-insensitive). Replayed requests always stay in the list. It works on top of the filter, and previous/next follows the results.
+- The **Status** column works like DevTools: `200 CORS` means the server answered but CORS blocked the page from reading the response, `(failed)` is a network error and `(canceled)` is an aborted request. Like DevTools, a request still running after a second is listed as `(pending)` with `Pending` as its duration and fills in when it finishes; if its page navigates away or its tab closes first, it turns `(failed)` with the reason. Hover over the status for details.
+- The browser doesn't expose the body of a page load, so a GET document request has a **Fetch body** button: it replays the URL from the page (without `If-*` cache headers) and opens the response as a new replayed request. Sending it again can have side effects, such as reusing an OAuth callback code.
 - Right-click the list header to show, hide or add columns (including request and response header columns, and the **Tab** column with the ID of the tab that sent each request). Drag a header to reorder it, or its edge to resize it.
 
 ![Request detail with previous/next](screenshots/detail.png)
@@ -63,6 +64,7 @@ Click the funnel icon to open the filter.
 - Set conditions on method, host (`*.example.com, localhost:*`), URL regex, status, content type and kind. Each condition can be **Include** or **Exclude**; empty conditions are ignored.
 - Requests that don't match are hidden from the list, and the toolbar shows how many are hidden.
 - Turn on **Don't record hidden requests** to drop them at recording time instead. They can't be shown again later, but they don't use up the 3,000 requests kept in total.
+- Requests still in flight stay listed under a status or content type condition until their response is known. With **Don't record hidden requests** and a status or content type condition, slow requests appear only once they finish.
 
 ![Filter](screenshots/filter.png)
 
@@ -73,7 +75,7 @@ Click the funnel icon to open the filter.
 | ● Record | Start or stop recording all tabs |
 | Clear | Remove all recorded requests, or only the current tab's requests when This tab only is on |
 | This tab only | List only the current tab's requests |
-| Globe (Document requests) | Also record page navigations and redirects |
+| Globe (Document requests) | Also record page navigations and redirects. Open a GET one and click **Fetch body** to see its body |
 | Funnel (Filter) | Open the filter |
 | Download (Export HAR) | Save the requests in the list as a HAR file. It includes cookies, so treat it as sensitive |
 | + (New request) | Write a new request and send it from the current tab |
