@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.1 — 2026-10-23
+
+### Changed
+
+- Wording: capturing requests is now called recording (the **Record** button, "Don't record hidden requests") and sending a request again is called replaying. The extension is now named "ReFetch - Record & Replay Requests".
+- Faster: with recording off, pages and the network are left almost untouched (no body reads, and the extension only watches network traffic while recording is on). The list, filter and search stay fast with 3,000 requests.
+- Large bodies: the detail view shows only the first 100,000 characters of a very large body, with a **Show all** button. Copy as and Edit still use the full body.
+
+### Fixed
+
+- Duration (ms) is now a whole number and closer to the real time. Document requests are measured until the response starts.
+
 ## 0.4.0 — 2026-10-22
 
 ### Added
