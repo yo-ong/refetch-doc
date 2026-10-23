@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.5.0 — 2026-10-23
+
+### Added
+
+- **Pending requests**: A request still running after a second is listed like in DevTools, with `(pending)` as its status and `Pending` as its duration, and fills in when it finishes. If its page navigates away or its tab closes first, it is closed as failed with the reason.
+- **Fetch body**: A GET document request has a **Fetch body** button that replays it from the page and opens the response as a new replayed request, since the browser doesn't expose the body of a navigation. Replaying a GET document request can have side effects, such as reusing an OAuth callback code.
+
+### Changed
+
+- Search: replayed requests always stay in the list, like with the filter. The "found" count still counts only real matches.
+- Filter: requests still in flight stay listed under a status or content type condition until their response is known. With "Don't record hidden requests" and a status or content type condition, slow requests appear only once they finish.
+
 ## 0.4.1 — 2026-10-23
 
 ### Changed
