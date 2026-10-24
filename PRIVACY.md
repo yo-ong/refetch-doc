@@ -1,6 +1,6 @@
 # ReFetch Privacy Policy
 
-**Last updated: 2026-10-23**
+**Last updated: 2026-10-24**
 
 ReFetch ("the extension") is a browser extension that records, inspects and replays fetch, XMLHttpRequest and EventSource requests made by web pages in your browser.
 
@@ -21,7 +21,7 @@ When you turn recording on, ReFetch records the requests your tabs make. A recor
 
 ## Settings sync
 
-Your preferences (display mode, document-recording option, This tab only option and list columns) are stored in `storage.sync`. If you are signed in to your browser with sync enabled, the browser vendor syncs these preferences between your devices under its own privacy policy. Recorded requests are never stored in `storage.sync`.
+Your preferences (display mode, document-recording option, This tab only option, list columns and Raw / Pretty body view) are stored in `storage.sync`. If you are signed in to your browser with sync enabled, the browser vendor syncs these preferences between your devices under its own privacy policy. Recorded requests are never stored in `storage.sync`.
 
 ## Replayed requests
 

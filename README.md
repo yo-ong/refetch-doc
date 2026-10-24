@@ -15,7 +15,7 @@ ReFetch is a browser extension for Chrome and Firefox that records the fetch, XH
 - One switch records all tabs, off by default. Status reads like DevTools: `(pending)`, `200 CORS`, `(failed)`, `(canceled)`.
 - One log of the latest 3,000 requests from all tabs, kept across page loads and after a tab is closed. Turn on This tab only to list just the current tab's requests; Clear then removes only that tab's requests.
 - With recording off, pages and the network are left almost untouched, and the list stays fast with 3,000 requests.
-- Raw request and response, including headers the browser adds such as cookies. Step through requests with previous / next, and copy a request as cURL or `fetch`.
+- Raw request and response, including headers the browser adds such as cookies, with JSON, NDJSON, form, XML and HTML bodies pretty-printed (switch to Raw any time). Step through requests with previous / next, and copy a request as cURL or `fetch`.
 - Search the list across URLs, headers and bodies (replayed requests always stay listed), and export it as a HAR file.
 - Edit and replay from the page itself, so its cookies and origin carry over. If that page is gone, send the request from the extension instead. Or write a new request from scratch.
 - Include / Exclude filter by method, host, URL, status, content type and kind.
@@ -32,6 +32,7 @@ ReFetch is a browser extension for Chrome and Firefox that records the fetch, XH
 ## Inspecting requests
 
 - Click a row to see the raw request and response, including headers the browser adds (cookies, etc.). Streaming responses update as data arrives. A very large body shows only its first 100,000 characters with a **Show all** button; Copy as and Edit always use the full body.
+- Bodies are shown **Pretty** by default: JSON (numbers and key order kept exactly; Google's `)]}'` prefix on its own line), NDJSON line by line, URL-encoded form data as `key = value`, and XML / HTML indented. The **Raw | Pretty** switch in the pane header changes both panes and is remembered. Bodies that can't be formatted (SSE, plain text that isn't JSON, binary, invalid ones, and truncated or still-streaming ones other than NDJSON) stay raw without the switch. Pretty HTML is the parsed page structure, so check Raw for the exact source. Copy as, Edit, search and HAR export always use the raw body.
 - Use the up/down buttons next to **Back** to move to the previous or next request.
 - Click **Copy as** in the detail view to copy the request as a cURL (bash) command, with the headers the browser sent (`Cookie` included), or as `fetch` code with the page's own headers (not for document requests).
 - Type in the search box above the list to show only requests whose URL, headers or bodies contain the text (case-insensitive). Replayed requests always stay in the list. It works on top of the filter, and previous/next follows the results.

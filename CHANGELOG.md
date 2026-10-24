@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0 — 2026-10-24
+
+### Added
+
+- **Pretty view**: Request and response bodies are pretty-printed by default. JSON is re-indented with its numbers and key order kept exactly (Google's `)]}'` prefix goes on its own line), NDJSON line by line, URL-encoded form data as `key = value`, and XML and HTML indented. The **Raw | Pretty** switch in the pane header changes the view of both panes, and the choice is remembered. Bodies that can't be formatted (server-sent events, plain text that isn't JSON, binary, invalid ones, and truncated or still-streaming ones other than NDJSON) stay raw without the switch. Pretty HTML is the parsed page structure, so check Raw for the exact source. Copy as, Edit, search and HAR export always use the raw body.
+
 ## 0.5.0 — 2026-10-23
 
 ### Added
